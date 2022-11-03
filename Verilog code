@@ -1,0 +1,14 @@
+`timescale 1ns / 1ps
+
+module d_latch(Q,en,Din,rset);
+output reg Q;
+input Din,en,rset;
+always @ (en or rset or Din)
+begin
+    if(rset)
+        Q <= 1'b0;
+    else  
+    if(en)
+        Q <= Din;
+end
+endmodule
