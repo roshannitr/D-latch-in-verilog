@@ -1,0 +1,20 @@
+`timescale 1ns / 1ps
+module d_latch_test();
+reg Din,en,rset;
+wire Q;
+d_latch d(Q,en,Din,rset);
+initial begin
+en=1;
+end
+always #500 en=~en;
+initial begin 
+rset = 0;Din=1;
+#10; rset=1;// Din=1;
+#10; rset=1; //Din=1;
+#10; rset=0; //Din=1;
+#10; //Din=0;
+#10; //Din=1;
+#100;
+end
+always #20 Din=~Din;
+endmodule
